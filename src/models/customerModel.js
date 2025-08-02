@@ -1,4 +1,5 @@
 const pool = require("../config/db");
+
 const CustomerModel = {
   create: async (userId, name, email, phone, address) => {
     const [result] = await pool.execute(
@@ -7,6 +8,7 @@ const CustomerModel = {
     );
     return result.insertId;
   },
+  
   findById: async (id) => {
     const [rows] = await pool.execute("SELECT * FROM customers WHERE id = ?", [
       id,
